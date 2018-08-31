@@ -1,13 +1,6 @@
-## [project-title] Changelog
+## durablefunctions-apiscraping-dotnet Changelog
 
 <a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+# 2018-08-31
 
-*Features*
-* ...
-
-*Bug Fixes*
-* ...
-
-*Breaking Changes*
-* ...
+Created repository.
