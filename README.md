@@ -25,6 +25,8 @@ dotnet build
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill)
 * Azure Subscription (if running on Azure)
   * [Get a free Azure Trial Subscription](https://azure.microsoft.com/free/?WT.mc_id=dotnet-sample-marouill)
+* `provision.ps1` requires the Azure CLI 2.0
+  * [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&WT.mc_id=dotnet-sample-marouill)
 
 ### Locally
 
