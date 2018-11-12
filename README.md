@@ -32,6 +32,21 @@ dotnet build
 
 Open the solution in Visual Studio 2017. Change the `GitHubToken` value in `local.settings.json` to match your GitHub Personal Access Token created previously in the pre-requisite.
 
+#### Sample `local.settings.json` file
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "AzureWebJobsSecretStorageType": "files", // temporary fix required for Azure Storage Emulator 5.8.0.0 and Azure Functions latest SDK.
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "GitHubToken": "INSERT_TOKEN_HERE"
+  }
+}
+```
+
 ### On Azure
 
 First, you will need to provision the service. Look into the `provision.ps1` file provided and modify the name of the storage and Azure Web Site values to ensure that they are unique.
