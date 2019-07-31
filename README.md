@@ -13,7 +13,7 @@ description: "Build an Azure Durable Functions that will scrape GitHub for opene
 ---
 
 # Retrieve opened issue count on GitHub with Azure Durable Functions
-
+ 
 ## Build
 
 The project can be built with the latest version of the [.NET CLI](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill). Or directly within Visual Studio 2017 with the .NET Core SDK.
