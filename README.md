@@ -52,7 +52,7 @@ Open the solution in Visual Studio 2017. Change the `GitHubToken` value in `loca
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "GitHubToken": "INSERT_TOKEN_HERE"
   }
-} 
+}
 ```
 
 ### On Azure
