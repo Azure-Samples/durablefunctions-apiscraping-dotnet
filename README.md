@@ -65,7 +65,7 @@ Then you can execute the file with the previously generated GitHub.
 .\provision.ps1 -githubToken <TOKEN> -resourceGroup <ResourceGroupName> -storageName <StorageAccountName> -functionName <FunctionName>
 ```
 
-# Resources
+## Resources
 
 * [Azure Functions Documentation](https://docs.microsoft.com/azure/azure-functions/?WT.mc_id=dotnet-sample-marouill)
 * [Introduction to Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=dotnet-sample-marouill)
