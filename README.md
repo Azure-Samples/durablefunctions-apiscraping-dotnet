@@ -1,12 +1,12 @@
 ---
 page_type: sample
 products:
-  - azure
-  - dotnet-core
-  - azure-functions
-  - azure-storage
+- azure
+- dotnet-core
+- azure-functions
+- azure-storage
 languages:
-  - csharp
+- csharp
 name: "Retrieve opened issue count on GitHub with Azure Durable Functions (.NET)"
 urlFragment: retrieve-opened-issue-count-on-github-with-azure-durable-functions
 description: "Build an Azure Durable Functions that will scrape GitHub for opened issues and store them on Azure Storage."
