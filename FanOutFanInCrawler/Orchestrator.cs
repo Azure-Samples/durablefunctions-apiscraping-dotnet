@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage;
@@ -32,21 +33,21 @@ namespace FanOutFanInCrawler
         /// <returns></returns>
         [FunctionName("Orchestrator_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
+            [DurableClient] IDurableOrchestrationClient client,
             ILogger log)
         {
             // Function input comes from the request content.
-            string instanceId = await starter.StartNewAsync("Orchestrator", "Nuget");
+            string instanceId = await client.StartNewAsync("Orchestrator", null, "Nuget");
 
             log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
-            return starter.CreateCheckStatusResponse(req, instanceId);
+            return client.CreateCheckStatusResponse(req, instanceId);
         }
 
         [FunctionName("Orchestrator")]
         public static async Task<string> RunOrchestrator(
-            [OrchestrationTrigger] DurableOrchestrationContext context)
+            [OrchestrationTrigger] IDurableOrchestrationContext context)
         {
             // retrieves the organization name from the Orchestrator_HttpStart function
             var organizationName = context.GetInput<string>();
@@ -75,7 +76,7 @@ namespace FanOutFanInCrawler
         }
 
         [FunctionName("GetAllRepositoriesForOrganization")]
-        public static async Task<List<(long id, string name)>> GetAllRepositoriesForOrganization([ActivityTrigger] DurableActivityContext context)
+        public static async Task<List<(long id, string name)>> GetAllRepositoriesForOrganization([ActivityTrigger] IDurableActivityContext context)
         {
             // retrieves the organization name from the Orchestrator function
             var organizationName = context.GetInput<string>();
@@ -85,11 +86,11 @@ namespace FanOutFanInCrawler
         }
 
         [FunctionName("GetOpenedIssues")]
-        public static async Task<(long id, int openedIssues, string name)> GetOpenedIssues([ActivityTrigger] DurableActivityContext context)
+        public static async Task<(long id, int openedIssues, string name)> GetOpenedIssues([ActivityTrigger] IDurableActivityContext context)
         {
             // retrieve a tuple of repositoryId and repository name from the Orchestrator function
             var parameters = context.GetInput<(long id, string name)>();
-            
+
             // retrieves a list of issues from a specific repository
             var issues = (await github.Issue.GetAllForRepository(parameters.id)).ToList();
 
@@ -98,7 +99,7 @@ namespace FanOutFanInCrawler
         }
 
         [FunctionName("SaveRepositories")]
-        public static async Task SaveRepositories([ActivityTrigger] DurableActivityContext context)
+        public static async Task SaveRepositories([ActivityTrigger] IDurableActivityContext context)
         {
             // retrieves a tuple from the Orchestrator function
             var parameters = context.GetInput<List<(long id, int openedIssues, string name)>>();
