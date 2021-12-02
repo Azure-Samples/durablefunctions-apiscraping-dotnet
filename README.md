@@ -16,7 +16,7 @@ description: "Build an Azure Durable Functions that will scrape GitHub for opene
 
 ## Build
 
-The project can be built with the latest version of the [.NET CLI](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill). Or directly within Visual Studio 2017 with the .NET Core SDK.
+The project can be built with the latest version of the [.NET CLI](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill). Or directly within Visual Studio 2022 with the .NET 6 installed.
 
 ```bash
 dotnet build
@@ -28,9 +28,9 @@ dotnet build
 
 * GitHub Personal Access Token
   * [How to create a Personal Access Token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
-* [Azure Functions Tooling](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs?WT.mc_id=dotnet-sample-marouill)
-* Visual Studio 2017
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill)
+* Latest version of the [Azure Functions Tooling](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs?WT.mc_id=dotnet-sample-marouill)
+* Visual Studio 2022
+* [.NET 6 SDK](https://www.microsoft.com/net/download?WT.mc_id=dotnet-sample-marouill)
 * Azure Subscription (if running on Azure)
   * [Get a free Azure Trial Subscription](https://azure.microsoft.com/free/?WT.mc_id=dotnet-sample-marouill)
 * `provision.ps1` requires the Azure CLI 2.0
@@ -38,7 +38,7 @@ dotnet build
 
 ### Locally
 
-Open the solution in Visual Studio 2017. Change the `GitHubToken` value in `local.settings.json` to match your GitHub Personal Access Token created previously in the pre-requisite.
+Open the solution in Visual Studio 2022. Change the `GitHubToken` value in `local.settings.json` to match your GitHub Personal Access Token created previously in the pre-requisite.
 
 #### Sample `local.settings.json` file
 
@@ -47,7 +47,6 @@ Open the solution in Visual Studio 2017. Change the `GitHubToken` value in `loca
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
     "AzureWebJobsSecretStorageType": "files", // temporary fix required for Azure Storage Emulator 5.8.0.0 and Azure Functions latest SDK.
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "GitHubToken": "INSERT_TOKEN_HERE"
