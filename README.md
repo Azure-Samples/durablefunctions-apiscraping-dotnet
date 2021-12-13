@@ -9,6 +9,7 @@ languages:
 - csharp
 extensions:
   ms.author: marouill
+  ms.custom: nextgen
 name: "Retrieve opened issue count on GitHub with Azure Durable Functions (.NET)"
 urlFragment: retrieve-opened-issue-count-on-github-with-azure-durable-functions
 description: "Build an Azure Durable Functions that will scrape GitHub for opened issues and store them on Azure Storage."
