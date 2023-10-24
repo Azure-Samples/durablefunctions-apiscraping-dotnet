@@ -2,7 +2,7 @@
 page_type: sample
 products:
 - azure
-- dotnet-core
+- dotnet
 - azure-functions
 - azure-storage
 languages:
